@@ -9,11 +9,8 @@ function App() {
   return (
     <div>
       <Navbar />
-      <h2 className="header active  align-items-center" style={{fontSize: 32, color:"black", marginLeft:"2rem", marginTop:"2rem"}}>
-      Submissions
-       {/*<a className="d-flex align-items-center" href="#"  style={{fontSize: 32, color:"black",marginLeft:"4rem"}}>   </a>*/}
-      </h2>
       <Filterbar />
+      <Listbar />
      
       
     </div>
