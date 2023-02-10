@@ -18,13 +18,14 @@ function Listbar() {
   const styles = {
     app: {
       width: "14%",
-      margin: `${MARGIN_MEDIUM}px ${MARGIN_REGULAR}px`,    
+      margin: `${MARGIN_MEDIUM}px ${MARGIN_REGULAR}px ${MARGIN_REGULAR}px ${MARGIN_REGULAR}px`,
+        
     },
     
     scroller: {
       margin: "0 0",
-      height: "400px",
-      width: "200%",
+      height: "500px",
+      width: "400px",
       overflow: "auto"
     },
     
@@ -40,11 +41,14 @@ function Listbar() {
             return (
               <div  style={styles.item}>
                 <MDBCol className="form-control" style={{marginRight:"1rem", textAlign:"left"}}>
-                <label style={{fontSize:`${FONT_HEADER_REGULAR}`, color:`${HEADER_BLACK}`}}><b>Work Flow: { item.location_status}</b></label>
-                <br/>
+                <MDBRow>
+                <MDBCol>
+                <label style={{fontSize:`${FONT_HEADER_REGULAR}`, color:`${HEADER_BLACK}`}}><b>Work Flow: { item.location_status}</b></label></MDBCol>
+                <MDBCol className="form-control" style={{marginRight:"1rem", maxWidth:"100px", backgroundColor:"lightgreen"}}></MDBCol></MDBRow>
+                
                 <label style={{fontSize:`${FONT_LABEL_REGULAR}`,color:`${LABEL_GREY}`}}>From:</label><label style={{fontSize:`${FONT_LABEL_REGULAR}`}}>{item.from}</label><br/>
                 <label style={{fontSize:`${FONT_LABEL_REGULAR}`,color:`${LABEL_GREY}`}}>To:</label><label style={{fontSize:`${FONT_LABEL_REGULAR}`}}>{item.to}</label><br/>
-                <label style={{fontSize:`${FONT_LABEL_REGULAR}`,color:`${LABEL_GREY}`}}>Due Date:</label><label style={{fontSize:`${FONT_LABEL_REGULAR}`}}>{item.due_date}</label><br/>
+                <label style={{fontSize:`${FONT_LABEL_REGULAR}`,color:`${LABEL_GREY}`}}>Due Date:</label><label style={{fontSize:`${FONT_LABEL_REGULAR}`, color:"red"}}>{item.due_date}</label><br/>
                 </MDBCol>
               </div>
             );
