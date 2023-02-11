@@ -68,8 +68,8 @@
     {
         "id":"7",
         "location_status": "Requires Location",
-        "workflow_status": "Needs Review",
-        "from": "fromdenisgordiyenya@gmail.com",
+        "workflow_status": "Unassigned",
+        "from": "sa@gmail.com",
         "to": "todenisgordiyenya@gmail.com@gmail.com",
         "customer_address": "Fake,address",
         "due_date": "06 December",

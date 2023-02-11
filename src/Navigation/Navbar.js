@@ -5,7 +5,7 @@ import { ClockHistory } from "react-bootstrap-icons";
 import { FileBarGraph } from "react-bootstrap-icons";
 import { BellFill } from "react-bootstrap-icons";
 import { BoxArrowRight  } from "react-bootstrap-icons";
-import {MARGIN_MEDIUM, MARGIN_REGULAR, MARGIN_XXX_SMALL,MARGIN_X_MEDIUM, WHITE, MARGIN_X_SMALL, MARGIN_LARG, MARGIN_SMALL} from "./../Utils/Constants";
+import {MARGIN_MEDIUM, MARGIN_REGULAR, MARGIN_XXX_SMALL,MARGIN_X_MEDIUM, WHITE, MARGIN_X_SMALL, MARGIN_LARG, MARGIN_SMALL} from "../utils/Constants";
 
 
 const Navbar = () => {

@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
 import {
     MARGIN_MEDIUM
-} from "./../Utils/Constants";
-var localData = require('./../Data/data.json')
+} from "../utils/Constants";
 
-const Map = () => {
+const Map = ({localData}) => {
     const [map, setMap] = useState(null);
-    const [currentLocation, setCurrentLocation] = useState({ lat: 0, lng: 0 });
     const [data]= useState(localData);
 
     useEffect(() => {
@@ -35,7 +33,7 @@ const Map = () => {
                                 lat: position.coords.latitude,
                                 lng: position.coords.longitude,
                             };
-                            
+
                             setMap(
                                 new window.google.maps.Map(document.getElementById("map"), {
                                     zoom: 8,
@@ -68,18 +66,20 @@ const Map = () => {
                 new window.google.maps.Marker({
                     position: location,
                     map: map,
+                    icon:{
+                        url: (require("./../assets/marker_icon.svg")),
+                        scale: 7,
+                    }
                 });
             });
         }
     }, [map, data]);
 
     return (
-        <div>
-            <div id="map" style={{
+            <div id="map" style={{ 
                 marginTop: `${MARGIN_MEDIUM}px`,
-                height: "500px", width: "935px"
+                height: "500px", width: "100%"
             }} />
-            </div>
     );
 };
 

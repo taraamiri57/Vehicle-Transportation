@@ -3,6 +3,7 @@
 export const MARGIN_XXX_SMALL = 2
 export const MARGIN_X_SMALL = 4
 export const MARGIN_SMALL = 8
+export const MARGIN_XX_MEDIUM = 16
 export const MARGIN_X_MEDIUM = 27
 export const MARGIN_MEDIUM = 32
 export const MARGIN_REGULAR = 40

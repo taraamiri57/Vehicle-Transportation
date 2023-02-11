@@ -6,54 +6,59 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import FormCheckLabel from "react-bootstrap/esm/FormCheckLabel";
 import { MDBContainer, MDBRow, MDBCol } from 'mdb-react-ui-kit';
-import { Form } from "react-bootstrap";
+import { Form, InputGroup } from "react-bootstrap";
 import { FileEarmarkArrowDownFill } from "react-bootstrap-icons";
-import ToggleButtonGroupUncontrolled from "../Buttons/TgButton";
-import DatepickerComponent from "../Buttons/DatePicker";
+import ToggleButtonGroupUncontrolled from "../buttons/TgButton";
+import DatepickerComponent from "../buttons/DatePicker";
+import DropDown from "../buttons/DropDown";
 
-import {MARGIN_MEDIUM, MARGIN_REGULAR, MARGIN_XXX_SMALL, MARGIN_X_SMALL, MARGIN_LARG, MARGIN_SMALL} from "./../Utils/Constants";
+import { MARGIN_MEDIUM, MARGIN_REGULAR, MARGIN_XXX_SMALL, MARGIN_X_SMALL, MARGIN_LARG, MARGIN_SMALL } from "../utils/Constants";
 
 
 
-const Filterbar = () => {
- 
+const Filterbar = (props) => {
+  const dropDownOptionListItems = ["Option1", "Option2","Option3","Option4"];
+  const dropDownStatusListItems = ["Low Risk", "Uncompleted", "Unassigned","Needs Review"];
   return (
-    <div>
-      <h2 className="header active  align-items-left" style={{
-        fontSize: 32, color: "black", marginTop: `${MARGIN_MEDIUM}px`, marginLeft: `${MARGIN_REGULAR}px` }}>
-        Submissions
-      </h2>
-      <MDBContainer  style={{marginLeft:`${MARGIN_REGULAR}px`}}>
-        <MDBRow>
-          <MDBCol className="form-control" style={{ maxWidth: "25%", height: "5%", marginRight:`${MARGIN_X_SMALL}px`}}>
-            <Form.Text className="text" style={{ margin:`${MARGIN_XXX_SMALL}px`, fontSize: 12 }}>
-              <Search style={{ margin: `${MARGIN_XXX_SMALL}px`, color: "lightgrey" }} /> Search...</Form.Text>
+    <div style={{marginTop: `${MARGIN_MEDIUM}px`, marginLeft: `${MARGIN_REGULAR}px`}}>
+    <h2 className="header active align-items-left" style={{fontSize: 32, color: "black"}}>
+      Submissions
+    </h2>
+      <MDBRow>
+        <MDBCol size="3" style={{maxWidth: "40%", height: "5%", marginRight: `${MARGIN_X_SMALL}px` }}>
+          <InputGroup style={{ justifyContent: "flex-start" }}>
+            <InputGroup.Text style={{ backgroundColor: "white" }}>
+              <Search style={{ margin: `${MARGIN_XXX_SMALL}px`, color: "lightgrey" }} />
+            </InputGroup.Text>
+            <Form.Control
+              placeholder="Search..."
+              aria-label="Search"
+              aria-describedby="basic-addon1"
+              type="text"
+              value={props.searchTerm}
+              onChange={props.handleSearch}
+            />
+          </InputGroup>
           </MDBCol>
-          <MDBCol className="form-control" style={{ maxWidth:"10%", height: "5%",  marginLeft: `${MARGIN_MEDIUM}px`, font: 8 }}>
-            <Form.Text className="text" style={{ fontSize: 12, color: "black" }}>
-              Select Form</Form.Text>
+          <MDBCol  style={{ maxWidth: "6%", height: "5%", marginLeft: `${MARGIN_MEDIUM}px`,marginRight: `${MARGIN_MEDIUM}px`, font: 8 }}>
+          <DropDown hint="Select Form" listItems={dropDownOptionListItems}/>
           </MDBCol>
-          <MDBCol className="form-control" style={{ maxWidth:"10%", height: "5%",marginLeft: `${MARGIN_MEDIUM}px`, font: 8 }}>
-            <Form.Text className="text" style={{ fontSize: 12, color: "black" }}>
-              Select Status</Form.Text>
+          <MDBCol style={{ maxWidth: "6%", height: "5%", marginLeft: `${MARGIN_MEDIUM}px`,marginRight: `${MARGIN_MEDIUM}px`, font: 8 }}>
+            <DropDown hint="Select Status" listItems={dropDownStatusListItems} />
           </MDBCol>
-          <MDBCol style={{maxWidth:"200%", marginLeft: `${MARGIN_MEDIUM}px`, font: 8 }}>
-           <DatepickerComponent/>
+          <MDBCol style={{ width: "25%",  marginLeft: `${MARGIN_MEDIUM}px`, font: 8 }}>
+            <DatepickerComponent  handleDateChange={props.handleDateChange} selectedDate={props.selectedDate} />
           </MDBCol>
-          <MDBCol style={{maxWidth:"5%"}} >
-           <ToggleButtonGroupUncontrolled/>
-             
+          <MDBCol style={{ width: "5%", maxWidth: "10%" }} >
+            <ToggleButtonGroupUncontrolled onViewChange={props.onViewChange} />
+
           </MDBCol>
-          <MDBCol style={{maxWidth:"5%", marginLeft:"5%", marginRight:"5%"}}>
-            <Form.Text className="text" style={{ fontSize: 14, color: "blue" }}><FileEarmarkArrowDownFill style={{color:"blue"}}/>
-              Export</Form.Text>
+          <MDBCol style={{ width:"5%",maxWidth: "10%",marginTop:`${MARGIN_X_SMALL}px`, marginRight: "1%" }}>
+            <FileEarmarkArrowDownFill size={24} style={{ color: "blue" }} /><span style={{ fontSize: 14, color: "blue" }}> Export</span>
           </MDBCol>
         </MDBRow>
-
-      </MDBContainer>
-
-    </div>
-
+  </div>
+  
   );
 }
 export default Filterbar;
