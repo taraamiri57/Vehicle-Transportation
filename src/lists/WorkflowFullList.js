@@ -1,8 +1,9 @@
 import React from 'react';
 import { Pagination } from 'react-bootstrap';
-import WFStatus from "../Views/WorkFlowStatus.js";
+import PropTypes from 'prop-types';
+import WFStatus from '../Views/WorkFlowStatus';
 
-const WorkFlowFullList = ({ submissions = [] }) => {
+function WorkFlowFullList ({ submissions }) {
   const [currentPage, setCurrentPage] = React.useState(1);
   const itemsPerPage = 9;
   const totalPages = Math.ceil(submissions.length / itemsPerPage);
@@ -21,7 +22,8 @@ const WorkFlowFullList = ({ submissions = [] }) => {
             <tr>
               <th>Task</th>
               <th style={{ position: 'relative' }}>
-                Status</th>
+                Status
+              </th>
               <th>From</th>
               <th>To</th>
               <th>Customer Address</th>
@@ -29,11 +31,11 @@ const WorkFlowFullList = ({ submissions = [] }) => {
             </tr>
           </thead>
           <tbody>
-            {submissionsList.map((submission, index) => (
-              <tr key={index}>
+            {submissionsList.map((submission) => (
+              <tr key={submission.id}>
                 <td>{`Work Flow: ${submission.location_status}`}</td>
-                <td style={{ position: 'relative'}}>
-                <WFStatus text={submission.workflow_status}/>
+                <td style={{ position: 'relative' }}>
+                  <WFStatus text={submission.workflow_status} />
                 </td>
                 <td>{submission.from}</td>
                 <td>{submission.to}</td>
@@ -49,6 +51,20 @@ const WorkFlowFullList = ({ submissions = [] }) => {
       </div>
     </div>
   );
+}
+
+WorkFlowFullList.propTypes = {
+  submissions: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number,
+      location_status: PropTypes.string,
+      workflow_status: PropTypes.string,
+      from: PropTypes.string,
+      to: PropTypes.string,
+      customer_address: PropTypes.string,
+      due_date: PropTypes.string,
+    }),
+  ).isRequired,
 };
 
 export default WorkFlowFullList;

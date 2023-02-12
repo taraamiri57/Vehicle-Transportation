@@ -1,0 +1,71 @@
+{
+    "extends": [
+        "eslint:recommended"
+    ],
+    "plugins": [
+        "import",
+        "react",
+        "jsx-a11y",
+        "react-hooks"
+    ],
+    "env": {
+        "browser": true,
+        "es6": true,
+        "node": true
+    },
+    "parser": "babel-eslint",
+    "parserOptions": {
+        "ecmaVersion": 2018,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true
+        }
+    },
+    "rules": {
+        "no-console": "off",
+        "no-debugger": "off",
+        "no-unused-vars": 0,
+        "object-shorthand": 0,
+        "react/jsx-filename-extension": [
+            1,
+            {
+                "extensions": [
+                    ".js",
+                    ".jsx"
+                ]
+            }
+        ],
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "warn",
+        "jsx-a11y/label-has-associated-control": [
+            "error",
+            {
+                "required": {
+                    "some": [
+                        "nesting",
+                        "id"
+                    ]
+                }
+            }
+        ],
+        "jsx-a11y/label-has-for": [
+            "error",
+            {
+                "required": {
+                    "some": [
+                        "nesting",
+                        "id"
+                    ]
+                }
+            }
+        ]
+    },
+    "overrides": [
+        {
+          "files": ["src/file1.js", "src/file2.js"],
+          "rules": {
+            "no-unused-vars": "off"
+          }
+        }
+      ]
+}

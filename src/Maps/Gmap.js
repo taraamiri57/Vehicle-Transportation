@@ -1,86 +1,102 @@
 import React, { useEffect, useState } from "react";
-import {
-    MARGIN_MEDIUM
-} from "../utils/Constants";
+import PropTypes from 'prop-types';
+import { MARGIN_MEDIUM } from "../utils/Constants";
+import marketicon from "../assets/marker_icon.svg"
 
-const Map = ({localData}) => {
-    const [map, setMap] = useState(null);
-    const [data]= useState(localData);
+function Map({ localData }) {
+  const [map, setMap] = useState(null);
+  const [data] = useState(localData);
 
-    useEffect(() => {
-        const loadScript = (src) => {
-            const tag = document.createElement("script");
-            tag.src = src;
-            tag.async = true;
-            document.body.appendChild(tag);
+  useEffect(() => {
+    const loadScript = (src) => {
+      const tag = document.createElement("script");
+      tag.src = src;
+      tag.async = true;
+      document.body.appendChild(tag);
 
-            return new Promise((resolve) => {
-                tag.onload = () => {
-                    resolve();
-                };
-            });
+        /* eslint-disable no-new */
+      return new Promise((resolve) => {
+        tag.onload = () => {
+          resolve();
         };
+      });
+    };
 
-        loadScript(
-            `https://maps.googleapis.com/maps/api/js?key=AIzaSyAjKSZss3Ct635YCj5F62IuXalXuwNV20I&callback=initMap`,
+    loadScript(
+      `https://maps.googleapis.com/maps/api/js?key=AIzaSyAjKSZss3Ct635YCj5F62IuXalXuwNV20I&callback=initMap`,
+    ).then(() => {
+      const initMap = () => {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(
+            (position) => {
+              const currentLocation = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude,
+              };
 
-        ).then(() => {
-            const initMap = () => {
-                if (navigator.geolocation) {
-                    navigator.geolocation.getCurrentPosition(
-                        (position) => {
-                            const currentLocation = {
-                                lat: position.coords.latitude,
-                                lng: position.coords.longitude,
-                            };
-
-                            setMap(
-                                new window.google.maps.Map(document.getElementById("map"), {
-                                    zoom: 8,
-                                    center: currentLocation,
-                                })
-                            );
-                        },
-                        (error) => {
-                            console.error(error);
-                        }
-                    );
-                } else {
-                    console.error("Geolocation is not supported by this browser.");
-                }
-            };
-            initMap();
-        });
-    }, []);
-
-    useEffect(() => {
-        if (map) {
-            data.map((item) => {
-                console.log(item.latitude)
-                if (typeof item.longitude !== 'number') {
-                    console.error('Longitude must be a number');
-                    return;
-                }
-                const location = { lat: item.latitude, lng: item.longitude };
-
-                new window.google.maps.Marker({
-                    position: location,
-                    map: map,
-                    icon:{
-                        url: (require("./../assets/marker_icon.svg")),
-                        scale: 7,
-                    }
-                });
-            });
+              setMap(
+                /* eslint-disable no-new */
+                new window.google.maps.Map(document.getElementById("map"), {
+                  zoom: 8,
+                  center: currentLocation,
+                }),
+              );
+            },
+            (error) => {
+              console.error(error);
+            },
+          );
+        } else {
+          console.error("Geolocation is not supported by this browser.");
         }
-    }, [map, data]);
+      };
+      initMap();
+    });
+  }, []);
 
-    return (
-            <div id="map" style={{ 
-                marginTop: `${MARGIN_MEDIUM}px`,
-                height: "500px", width: "100%"
-            }} />
-    );
+  useEffect(() => {
+    if (map) {
+      data.forEach((item) => {
+        if (typeof item.longitude !== "number") {
+          console.error("Longitude must be a number");
+          return;
+        }
+        const location = { lat: item.latitude, lng: item.longitude };
+
+        /* eslint-disable no-new */
+        new window.google.maps.Marker({
+            position: location,
+            map: map,
+            icon: { url: marketicon, scale: 7 },
+          });
+      });
+    }
+  }, [map, data]);
+
+  return (
+    <div
+      id="map"
+      style={{
+        marginTop: `${MARGIN_MEDIUM}px`,
+        height: "500px",
+        width: "100%",
+      }}
+    />
+  );
+}
+
+Map.propTypes = {
+    localData: PropTypes.arrayOf(
+        PropTypes.shape({
+          id: PropTypes.number,
+          location_status: PropTypes.string,
+          workflow_status: PropTypes.string,
+          from: PropTypes.string,
+          to: PropTypes.string,
+          customer_address: PropTypes.string,
+          due_date: PropTypes.string,
+        }),
+      ).isRequired,
 };
 
 export default Map;

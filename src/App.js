@@ -1,13 +1,12 @@
 import React, {useState} from 'react';
 import "bootstrap/dist/css/bootstrap.min.css";
-import Navbar from "./navigation/Navbar.js";
-import Filterbar from "./filters/Filter.js";
-import Listbar from "./lists/WorkflowSideList.js"
-import WorkFlowFullList from './lists/WorkflowFullList.js';
-import Map from "./maps/Gmap.js"
-import { MDBRow, MDBCol } from 'mdbreact';
-const localData = require('./data/data.json')
+import Navbar from "./navigation/Navbar";
+import Filterbar from "./filters/Filter";
+import Listbar from "./lists/WorkflowSideList"
+import WorkFlowFullList from './lists/WorkflowFullList';
+import Map from "./maps/Gmap"
 
+const localData = require('./data/data.json')
 
 function App() {
 
@@ -17,18 +16,18 @@ function App() {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
 
-  // ToggleButton Callback
+  // ToggleButton Callback 
   const handleViewChange = (value) => {
     setActiveView(value);
   };
 
 
-  // DatePicker callback
+  // DatePicker callback (TBC)
   const handleDateChange = (date) => {
     setSelectedDate(date);
   };
 
-  // Search callback
+  // Search callback (To be completed)
   const handleSearch = event => {
     if(event.target.value!=null){
     setSearchTerm(event.target.value);
@@ -44,22 +43,25 @@ function App() {
   return (
     <div>
       <Navbar />
-      <Filterbar onViewChange={handleViewChange} handleDateChange={handleDateChange} selectedDate={selectedDate} searchTerm={searchTerm} handleSearch={handleSearch}/>
-      {activeView === 1 && <MDBRow>
-        <MDBCol size="4">
-          <Listbar localData={data} />
-        </MDBCol>
-        <MDBCol size="8">
-        <Map localData={data}/>
-        </MDBCol>
-      </MDBRow>
+      <Filterbar localData= {data} onViewChange={handleViewChange} handleDateChange={handleDateChange} selectedDate={selectedDate} searchTerm={searchTerm} handleSearch={handleSearch} />
+      {activeView === 1 && 
+        <div className="d-flex">
+          <div className="col-md-4 p-0">
+            <Listbar localData={data} />
+          </div>
+          <div className="col-md-8 p-0">
+            <Map localData={data} />
+          </div>
+        </div>
       }
-
-      {activeView === 2 &&  <MDBCol>
-          <WorkFlowFullList submissions={localData} />
-        </MDBCol>}
     
-
+      {activeView === 2 &&
+        <div className="d-flex">
+          <div className="col-md-12 p-0">
+            <WorkFlowFullList submissions={localData} />
+          </div>
+        </div>
+      }
     </div>
   );
 }

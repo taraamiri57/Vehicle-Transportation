@@ -5,7 +5,7 @@
         "workflow_status": "Uncomplete",
         "from": "fromdenisgordiyenya@gmail.com",
         "to": "todenisgordiyenya@gmail.com@gmail.com",
-        "customer_address": "Fake,address",
+        "customer_address": "Address",
         "due_date": "06 December",
         "latitude": 43.472271,
         "longitude": -80.539009
@@ -16,7 +16,7 @@
         "workflow_status": "Low Risk",
         "from": "fromdenisgordiyenya@gmail.com",
         "to": "todenisgordiyenya@gmail.com@gmail.com",
-        "customer_address": "Fake,address",
+        "customer_address": "Address",
         "due_date": "06 December",
         "latitude": 43.472370,
         "longitude": -80.538872
@@ -27,7 +27,7 @@
         "workflow_status": "Needs Review",
         "from": "fromdenisgordiyenya@gmail.com",
         "to": "todenisgordiyenya@gmail.com@gmail.com",
-        "customer_address": "Fake,address",
+        "customer_address": "Address",
         "due_date": "06 December",
         "latitude": 43.449760,
         "longitude": -80.489342
@@ -38,7 +38,7 @@
         "workflow_status": "Uncomplete",
         "from": "fromdenisgordiyenya@gmail.com",
         "to": "todenisgordiyenya@gmail.com@gmail.com",
-        "customer_address": "Fake,address",
+        "customer_address": "Address",
         "due_date": "06 December",
         "latitude": 43.459709,
         "longitude": -80.519272
@@ -49,7 +49,7 @@
         "workflow_status": "Needs Review",
         "from": "fromdenisgordiyenya@gmail.com",
         "to": "todenisgordiyenya@gmail.com@gmail.com",
-        "customer_address": "Fake,address",
+        "customer_address": "Address",
         "due_date": "06 December",
         "latitude": 43.5932799,
         "longitude": -79.6445717
@@ -60,7 +60,7 @@
         "workflow_status": "Low Risk",
         "from": "fromdenisgordiyenya@gmail.com",
         "to": "todenisgordiyenya@gmail.com@gmail.com",
-        "customer_address": "Fake,address",
+        "customer_address": "Address",
         "due_date": "06 December",
         "latitude": 43.5934664,
         "longitude": -79.6442723
@@ -71,7 +71,7 @@
         "workflow_status": "Unassigned",
         "from": "sa@gmail.com",
         "to": "todenisgordiyenya@gmail.com@gmail.com",
-        "customer_address": "Fake,address",
+        "customer_address": "Address",
         "due_date": "06 December",
         "latitude": 43.5896207,
         "longitude": -79.6456492
@@ -82,7 +82,7 @@
         "workflow_status": "Low Risk",
         "from": "fromdenisgordiyenya@gmail.com",
         "to": "todenisgordiyenya@gmail.com@gmail.com",
-        "customer_address": "Fake,address",
+        "customer_address": "Address",
         "due_date": "06 December",
         "latitude": 43.6676436,
         "longitude": -79.3945326
@@ -93,7 +93,7 @@
         "workflow_status": "Uncomplete",
         "from": "fromdenisgordiyenya@gmail.com",
         "to": "todenisgordiyenya@gmail.com@gmail.com",
-        "customer_address": "Fake,address",
+        "customer_address": "Address",
         "due_date": "06 December",
         "latitude": 40.7592619,
         "longitude": -73.9780119
