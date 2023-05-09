@@ -23,7 +23,7 @@ function Map({ localData }) {
     };
 
     loadScript(
-      `https://maps.googleapis.com/maps/api/js?key=AIzaSyAjKSZss3Ct635YCj5F62IuXalXuwNV20I&callback=initMap`,
+      ``,
     ).then(() => {
       const initMap = () => {
         if (navigator.geolocation) {
